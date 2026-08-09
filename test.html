@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<title>WebSocket Test</title>
+<script>
+ws = new WebSocket('ws://localhost:8000/ws/test123');
+ws.onopen = e => {
+  console.log('✅ Connected');
+  ws.send(JSON.stringify({type:'message', content:'hello'}));
+};
+ws.onmessage = e => console.log(JSON.parse(e.data));
+ws.onerror = e => console.error('Error:', e);
+</script>
+<p>Open F12 Console</p>
